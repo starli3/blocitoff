@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140327082101) do
+ActiveRecord::Schema.define(:version => 20140327161624) do
 
   create_table "items", :force => true do |t|
     t.text     "body"
@@ -27,9 +27,11 @@ ActiveRecord::Schema.define(:version => 20140327082101) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "item_id"
+    t.integer  "user_id"
   end
 
   add_index "todos", ["item_id"], :name => "index_todos_on_item_id"
+  add_index "todos", ["user_id"], :name => "index_todos_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
