@@ -4,10 +4,10 @@ class TodosController < ApplicationController
   end
 
   def create
-    @todo = Todo.new(params[:todo])
+    @todo = current_user.todos.build(params[:todo])
     if @todo.save
     redirect_to @todo, notice: 'Your new TODO was saved'
-  end
+    end
   end
 
   def show

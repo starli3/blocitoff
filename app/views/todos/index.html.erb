@@ -1,49 +1,29 @@
 <h1>My Todos</h1>
 
 <div class="row">
-  <div class="span8">
-    <% @todos.each do |todo| %>
-      <div class="media">
-        <div class="media-body">
-          
-          
+  <div class="span8">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Todo</th>
+          <th>Complete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <% @todos.each do |todo| %>
+            <td><%= todo.description %></td>
+            <td><button type="submit" class="btn">Completed</button></td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
 
-          <h4 class="media-heading">
-             <%= todo.description %>
-          </h4>
+    <br/>
 
-          <button type="submit" class="btn">Completed</button>
-    
-      
-        </div>
-      </div>
-    <% end %>
-
-    <br/>
-  
-  </div>
-
-      <%= link_to "Create New Todo", new_todo_path, class: 'btn btn-large btn-block' %>
- 
-  </div>
+    <%= link_to "Create New Todo", new_todo_path, class: 'btn btn-large btn-block' %>
+  </div>
 </div>
 
+
 <br/>
-
-  <TABLE BORDER=3 CELLSPACING=3 CELLPADDING=3>
-
-<TR>
-<TD ALIGN="center" COLSPAN="3">My Todos</TD>
-</TR>
-
-<TR>
-  <TD ALIGN="center">Description</TD>
-  <TD ALIGN="center">Days Left</TD>
-  <TD ALIGN="center">Complete</TD>
-</TR>
-<TR>
-  <TD ALIGN="center">Learn Haskell</TD>
-  <TD ALIGN="center">3</TD>
-  <TD ALIGN="center">Completed</TD>
-
-</TABLE>
