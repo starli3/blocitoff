@@ -1,21 +1,38 @@
-<h1>My Todos</h1>
+Total todos = <%= @todos.size %>
 
+<h1>My Todo Items</h1>
+
+
+<div class="container-fluid">
 <div class="row">
-  <div class="span8">
+  <div class="col-md-8">
     <table class="table">
       <thead>
         <tr>
-          <th>Todo</th>
-          <th>Complete</th>
+          <th>Todo Item</th>
+          <th>Days Left</th>
+          <th>Mark Complete</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
+        
           <% @todos.each do |todo| %>
-            <td><%= todo.description %></td>
-            <td><button type="submit" class="btn">Completed</button></td>
+            <tr>
+              <td><%= todo.description %></td>
+
+              <td><%created = (Date.today - todo.created_at.to_date).to_i
+
+              time_left = (6 - created)%>
+
+              <%=time_left%></td>
+              
+              <td>
+              <%= link_to "Completed", todo, method: :delete, class: 'btn btn-danger', confirm: 'Are you sure you want to complete?' %> 
+              </td>
+
+            </tr>
           <% end %>
-        </tr>
+
       </tbody>
     </table>
 
@@ -24,6 +41,8 @@
     <%= link_to "Create New Todo", new_todo_path, class: 'btn btn-large btn-block' %>
   </div>
 </div>
+</div>
 
 
 <br/>
+

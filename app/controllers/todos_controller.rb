@@ -18,4 +18,18 @@ class TodosController < ApplicationController
     @todos = current_user.todos
   end
 
+  def destroy
+    @todo = Todo.find params[:id]
+    name = @todo.description
+
+    # authorize @todo
+    if @todo.destroy
+      flash[:notice] = "\"#{name}\" was deleted successfully."
+      redirect_to todos_path
+    else
+      flash[:error] = "There was an error deleting the todo."
+      render :show
+    end
+  end
+
 end
